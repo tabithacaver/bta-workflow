@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChecklistsRouteImport } from './routes/checklists'
+import { Route as ExceptionsRouteImport } from './routes/exceptions'
+import { Route as FrictionPointsRouteImport } from './routes/friction-points'
+import { Route as ProcessRouteImport } from './routes/process'
+import { Route as QuickReferenceRouteImport } from './routes/quick-reference'
+import { Route as RolesRouteImport } from './routes/roles'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChecklistsRoute = ChecklistsRouteImport.update({
+  id: '/checklists',
+  path: '/checklists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExceptionsRoute = ExceptionsRouteImport.update({
+  id: '/exceptions',
+  path: '/exceptions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrictionPointsRoute = FrictionPointsRouteImport.update({
+  id: '/friction-points',
+  path: '/friction-points',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessRoute = ProcessRouteImport.update({
+  id: '/process',
+  path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuickReferenceRoute = QuickReferenceRouteImport.update({
+  id: '/quick-reference',
+  path: '/quick-reference',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RolesRoute = RolesRouteImport.update({
+  id: '/roles',
+  path: '/roles',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/checklists': typeof ChecklistsRoute
+  '/exceptions': typeof ExceptionsRoute
+  '/friction-points': typeof FrictionPointsRoute
+  '/process': typeof ProcessRoute
+  '/quick-reference': typeof QuickReferenceRoute
+  '/roles': typeof RolesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/checklists': typeof ChecklistsRoute
+  '/exceptions': typeof ExceptionsRoute
+  '/friction-points': typeof FrictionPointsRoute
+  '/process': typeof ProcessRoute
+  '/quick-reference': typeof QuickReferenceRoute
+  '/roles': typeof RolesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/checklists': typeof ChecklistsRoute
+  '/exceptions': typeof ExceptionsRoute
+  '/friction-points': typeof FrictionPointsRoute
+  '/process': typeof ProcessRoute
+  '/quick-reference': typeof QuickReferenceRoute
+  '/roles': typeof RolesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/checklists'
+    | '/exceptions'
+    | '/friction-points'
+    | '/process'
+    | '/quick-reference'
+    | '/roles'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/checklists'
+    | '/exceptions'
+    | '/friction-points'
+    | '/process'
+    | '/quick-reference'
+    | '/roles'
+  id:
+    | '__root__'
+    | '/'
+    | '/checklists'
+    | '/exceptions'
+    | '/friction-points'
+    | '/process'
+    | '/quick-reference'
+    | '/roles'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChecklistsRoute: typeof ChecklistsRoute
+  ExceptionsRoute: typeof ExceptionsRoute
+  FrictionPointsRoute: typeof FrictionPointsRoute
+  ProcessRoute: typeof ProcessRoute
+  QuickReferenceRoute: typeof QuickReferenceRoute
+  RolesRoute: typeof RolesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checklists': {
+      id: '/checklists'
+      path: '/checklists'
+      fullPath: '/checklists'
+      preLoaderRoute: typeof ChecklistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exceptions': {
+      id: '/exceptions'
+      path: '/exceptions'
+      fullPath: '/exceptions'
+      preLoaderRoute: typeof ExceptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/friction-points': {
+      id: '/friction-points'
+      path: '/friction-points'
+      fullPath: '/friction-points'
+      preLoaderRoute: typeof FrictionPointsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/process': {
+      id: '/process'
+      path: '/process'
+      fullPath: '/process'
+      preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quick-reference': {
+      id: '/quick-reference'
+      path: '/quick-reference'
+      fullPath: '/quick-reference'
+      preLoaderRoute: typeof QuickReferenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roles': {
+      id: '/roles'
+      path: '/roles'
+      fullPath: '/roles'
+      preLoaderRoute: typeof RolesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChecklistsRoute: ChecklistsRoute,
+  ExceptionsRoute: ExceptionsRoute,
+  FrictionPointsRoute: FrictionPointsRoute,
+  ProcessRoute: ProcessRoute,
+  QuickReferenceRoute: QuickReferenceRoute,
+  RolesRoute: RolesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
