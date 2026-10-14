@@ -16,7 +16,7 @@ function Page() {
       <PageHeader eyebrow="Reference" title="Roles & Responsibilities" intro="All team members may access a file when needed, but access does not automatically transfer ownership." />
       <div className="grid gap-6 md:grid-cols-3">
         {roles.map((r, i) => {
-          const Icon = icons[i];
+          const Icon = icons[i] ?? Users;
           return (
             <section key={r.name} className={`rounded-xl border bg-card p-6 ${i === 0 ? "ring-2 ring-primary" : ""}`}>
               <Icon className="h-6 w-6 text-primary" />
